@@ -17,7 +17,7 @@ public class KarateChop {
         }
         else
         {
-            return chop(valueToFind, getArrayCut(arrayOfValues, middlePosition));
+            return chop(valueToFind, getArrayFromStartPositionToLastPosition(arrayOfValues, 0, middlePosition));
         }
 
     }
@@ -26,14 +26,15 @@ public class KarateChop {
         return arrayOfValues.length == 0;
     }
 
-    private int[] getArrayCut(int[] arrayToCut, int lastElement) {
+    private int[] getArrayFromStartPositionToLastPosition(int[] arrayToCut, int startPosition, int endPosition) {
 
-        int[] result = new int[lastElement];
+        int[] result = new int[endPosition];
 
-        for(int index = 0; index<lastElement; index++){
+        for(int index = startPosition; index<endPosition; index++){
             result[index] = arrayToCut[index];
         }
 
         return result;
     }
+
 }
