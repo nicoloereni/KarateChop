@@ -1,30 +1,37 @@
 
 
 public class KarateChop {
+
     public int chop(int valueToFind, int[] arrayOfValues) {
 
         int middlePosition = arrayOfValues.length / 2;
 
-        if (isArrayEmpty(arrayOfValues)) {
-            return -1;
-        }
-        if (arrayOfValues[middlePosition] == valueToFind) {
+        if (!isArrayEmpty(arrayOfValues) && arrayOfValues[middlePosition] == valueToFind) {
             return middlePosition;
-        } else if (isArrayGraterThanOne(arrayOfValues)) {
+        }
+        else if (isArrayGraterThanOne(arrayOfValues)) {
             return getPositionWithValueFromArray(valueToFind, arrayOfValues);
         }
+
         return -1;
     }
 
-    private Integer getPositionWithValueFromArray(int valueToFind, int[] arrayOfValues) {
+    private int getPositionWithValueFromArray(int valueToFind, int[] arrayOfValues) {
+
         int middlePosition = arrayOfValues.length / 2;
-        if (isMiddlePositionValueGreaterThanValueToFind(arrayOfValues[middlePosition], valueToFind))
+        int middlePositionValue = arrayOfValues[middlePosition];
+
+        if (isMiddlePositionValueGreaterThanValueToFind(middlePositionValue, valueToFind))
         {
             return chop(valueToFind, getArrayFromStartPositionToLastPosition(arrayOfValues, 0, middlePosition));
-        } else if (!isMiddlePositionValueGreaterThanValueToFind(arrayOfValues[middlePosition], valueToFind)) {
-            return chop(valueToFind, getArrayFromStartPositionToLastPosition(arrayOfValues, middlePosition, arrayOfValues.length)) + middlePosition;
+
+        } else if (!isMiddlePositionValueGreaterThanValueToFind(middlePositionValue, valueToFind))
+        {
+
+            int valuePositionRightSide = chop(valueToFind, getArrayFromStartPositionToLastPosition(arrayOfValues, middlePosition, arrayOfValues.length));
+            return valuePositionRightSide == -1 ? -1 : valuePositionRightSide + middlePosition;
         }
-        return null;
+        return -1;
     }
 
     private boolean isMiddlePositionValueGreaterThanValueToFind(int middlePositionValue, int valueToFind) {
