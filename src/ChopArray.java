@@ -35,11 +35,11 @@ public class ChopArray
         return getMiddlePositionValue() > valueToFind;
     }
 
-    public ChopArray getArrayZeroToMiddle(){
+    public ChopArray getZeroToMiddleSubArray(){
         return getArrayFromStartPositionToLastPosition(0, getMiddlePosition());
     }
 
-    public ChopArray getArrayMiddleToEnd(){
+    public ChopArray getMiddleToEndSubArray(){
         return getArrayFromStartPositionToLastPosition(getMiddlePosition(), getSize() );
     }
 

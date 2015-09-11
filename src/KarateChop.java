@@ -18,11 +18,11 @@ public class KarateChop {
 
         if (arrayOfValues.isMiddlePositionValueGreaterThan(valueToFind))
         {
-            return chop(valueToFind, arrayOfValues.getArrayZeroToMiddle());
+            return chop(valueToFind, arrayOfValues.getZeroToMiddleSubArray());
 
         } else
         {
-            int valuePositionRightSide = chop(valueToFind, arrayOfValues.getArrayMiddleToEnd());
+            int valuePositionRightSide = chop(valueToFind, arrayOfValues.getMiddleToEndSubArray());
             return valuePositionRightSide == -1 ? -1 : valuePositionRightSide + arrayOfValues.getMiddlePosition();
         }
     }
