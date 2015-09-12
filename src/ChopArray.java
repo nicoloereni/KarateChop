@@ -14,7 +14,7 @@ public class ChopArray
         return getSize()/2;
     }
 
-    public boolean isArrayGraterThanOne() {
+    public boolean isArrayGreaterThanOne() {
         return getSize() >1;
     }
 
@@ -22,7 +22,7 @@ public class ChopArray
         return getSize() == 0;
     }
 
-    public int getMiddlePositionValue()
+    private int getMiddlePositionValue()
     {
         return values[getMiddlePosition()];
     }
@@ -51,5 +51,15 @@ public class ChopArray
             result.values[newIndex++] = values[index];
         }
         return result;
+    }
+
+    public boolean isMiddlePositionValueEqualsTo(int valueToFind) {
+
+        if(isArrayEmpty())
+        {
+            return false;
+        }
+
+        return getMiddlePositionValue() == valueToFind;
     }
 }
